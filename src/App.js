@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  let [글제목, 글제목변경] = useState(['남자코트 추천', '가나초콜렛', '나의소개']);
+  let [글제목, 글제목변경] = useState(['리액트 기본', 'SPA의 개념', 'html, css, javascript 기초']);
   let [따봉, 따봉변경] = useState([0,0,0]);
   let [modal, modal변경] = useState(false);
   let [모달제목, 모달제목변경] = useState('');
@@ -12,7 +12,7 @@ function App() {
 
   let 제목바꾸기 = () => {
     let newTitle = [...글제목];
-    newTitle[0] = '여자코트 추천';
+    newTitle[0] = '개발 블로그를 써야 하는 이유';
     글제목변경( newTitle );  
   }
   let 정렬함수 = () => {
@@ -40,14 +40,14 @@ function App() {
       <div className='black-nav'>
         <div>개발 Blog</div>
       </div>
-      <button onClick={제목바꾸기}>버튼</button>
-      <button onClick={정렬함수}>정렬</button>
+      <button onClick={제목바꾸기}>첫번째 글 제목 바꾸기</button>
+      <button onClick={정렬함수}>글 오름차순 정렬</button>
       {
         글제목.map((글,idx)=>{
           return(
             <div className='list' key={idx}>
-              <h3 onClick={()=>{ 모달제목변경(글); }}>{ 글 } 
-                <span onClick={()=>{ changeThumb(idx) }}>👍</span> { 따봉[idx] } 
+              <h3 onClick={()=>{ 모달제목변경(글); }} className='pointer'>{ 글 } 
+                <span onClick={()=>{ changeThumb(idx) }}  className='pointer'>👍</span> { 따봉[idx] } 
               </h3>
               <p>2월 17일 발행</p>
               <hr/>
@@ -59,7 +59,7 @@ function App() {
       <Profile />
       <div className='publish'>
         <input onChange={(e) => { 입력값변경(e.target.value) }} /><br/><br/>
-        <button onClick={ ()=> { publish(입력값); addThumb(); } }>저장</button>
+        <button onClick={ ()=> { publish(입력값); addThumb(); } }>글 등록</button>
       </div>
       
       <button onClick={()=>{ modal변경(!modal) }}>모달창</button>
@@ -97,7 +97,7 @@ class Profile extends React.Component{
       <div>
         <h3>프로필입니다</h3>
         <p>저는 { this.state.name } 입니다.</p>
-        <button onClick={ this.changeName }>버튼</button>
+        <button onClick={ this.changeName }>이름 바꾸기</button>
       </div>
     )
   }

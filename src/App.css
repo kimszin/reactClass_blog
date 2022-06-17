@@ -25,6 +25,9 @@ body {
   margin: auto;
   margin-top: 10px;
 }
+.pointer {
+  cursor: pointer;
+}
 .black-nav {
   background: black;
   width: 100%;
